@@ -11,10 +11,12 @@ var PlayerView = Backbone.View.extend({
 
   setSong: function(song) {
     this.model = song;
+    console.log(song);
+    var nextSong = this.model.playQueue.bind(this.model);
     this.render();
-    // this.el.addEventListener('ended',function(){
-    //   this.setSong(this.model.get('songQueue').shift());
-    // });
+    this.el.addEventListener('ended', function(e){
+      nextSong();
+    });
   },
 
   render: function() {
