@@ -9,14 +9,15 @@ var PlayerView = Backbone.View.extend({
   initialize: function() {
   },
 
+  events: {
+    'ended': function(e) {
+      this.model.playQueue();
+    }
+  },
+
   setSong: function(song) {
     this.model = song;
-    console.log(song);
-    var nextSong = this.model.playQueue.bind(this.model);
     this.render();
-    this.el.addEventListener('ended', function(e){
-      nextSong();
-    });
   },
 
   render: function() {
