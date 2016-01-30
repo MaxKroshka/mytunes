@@ -3,7 +3,7 @@ var PlaylistEntryView = Backbone.View.extend({
 
   tagName: 'tr',
 
-  template: _.template('<td>(<%= artist %>)</td><td><%= title %><button class=x>X</button></td>'),
+  template: _.template('<td class=artist><%= artist %></td><td><%= title %><button class="x btn btn-danger btn-xs">X</button></td>'),
 
   events: {
     'click button.x': function() {

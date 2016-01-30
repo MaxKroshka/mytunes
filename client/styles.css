@@ -1,0 +1,48 @@
+
+body {
+  background-color: #34495e;
+  font-family: 'Indie Flower', cursive;
+  font-size: 16px;
+}
+
+body>div {
+  background-color: white;
+  margin: 0 auto;
+  width: 40%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+button {
+  padding-left: 5px;
+  margin-left: 5px;
+}
+
+.artist {
+  padding-right: 30px;
+  font-size: 20px;
+}
+
+.audio {
+  text-align: center;
+}
+
+.listHeader {
+  font-size: 28px;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+div>input {
+  padding: 5px;
+  font-size: 10px;
+  margin-left: 20px;
+}
+
+td {
+  padding: 4px;
+}
+
