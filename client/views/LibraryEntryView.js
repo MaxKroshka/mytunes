@@ -3,7 +3,7 @@ var LibraryEntryView = Backbone.View.extend({
 
   tagName: 'tr',
 
-  template: _.template('<td class=artist><span class="glyphicon glyphicon-play-circle"></span><%= artist %></td><td><%= title %><button class="queue btn btn-primary btn-xs">Queue</button><button class="playlist btn btn-warning btn-xs">Playlist</button></td>'),
+  template: _.template('<td class=artist><span class="glyphicon glyphicon-play-circle"></span><%= artist %></td><td><%= title %><button class="queue btn btn-primary btn-sm">Queue</button><button class="playlist btn btn-warning btn-sm">Playlist</button></td>'),
 
   events: {
     'click button.queue': function() {
@@ -18,7 +18,7 @@ var LibraryEntryView = Backbone.View.extend({
         $(this.el).find('span').removeClass('paused').toggleClass('glyphicon-pause').toggleClass('glyphicon-play-circle').addClass('playing');
       }else{
         this.model.play();
-        $('span').removeClass('glyphicon-pause').addClass('glyphicon-play-circle').removeClass('playing');
+        $('span').removeClass('glyphicon-pause').addClass('glyphicon-play-circle').removeClass('playing').removeClass('paused');
         $(this.el).find('span').toggleClass('glyphicon-play-circle').toggleClass('glyphicon-pause').addClass('playing');
       }
     },

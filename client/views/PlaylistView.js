@@ -19,7 +19,7 @@ var PlaylistView = Backbone.View.extend({
   render: function() {
     this.$el.children().detach();
 
-    this.$el.html('<div class=listHeader>Aaliyah<button class="x btn btn-danger btn-xs">X</button></div>').append(
+    this.$el.html('<div class=listHeader>Aaliyah<button class="x btn btn-danger btn-sm">Remove</button></div>').append(
       this.collection.map(function(song) {
         return new PlaylistEntryView({model: song}).render();
       })

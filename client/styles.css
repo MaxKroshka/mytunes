@@ -2,7 +2,7 @@
 body {
   background-color: #34495e;
   font-family: 'Indie Flower', cursive;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 body>div {
@@ -21,7 +21,7 @@ button {
 
 .artist {
   padding-right: 30px;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .audio {
@@ -29,7 +29,7 @@ button {
 }
 
 .listHeader {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: bold;
   border-bottom: 1px solid black;
   padding: 5px;
@@ -38,7 +38,7 @@ button {
 
 div>input {
   padding: 5px;
-  font-size: 10px;
+  font-size: 14px;
   margin-left: 20px;
 }
 
@@ -51,9 +51,10 @@ span {
 }
 
 .currentSong {
-  font-size: 20px;
+  padding: 5px;
+  font-size: 24px;
 }
 
 .currentSong>span {
-  font-size: 16px;
+  font-size: 20px;
 }

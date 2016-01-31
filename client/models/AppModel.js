@@ -42,7 +42,7 @@ var AppModel = Backbone.Model.extend({
     }, this);
 
     params.library.on('removeFromPlaylist', function(song) {
-      this.get('newCollection').remove(song);
+      this.get('playlist').remove(song);
     }, this);
   }
 
