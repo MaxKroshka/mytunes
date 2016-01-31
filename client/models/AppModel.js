@@ -4,8 +4,14 @@ var AppModel = Backbone.Model.extend({
   initialize: function(params) {
     this.set('currentSong', new SongModel());
     this.set('songQueue', new SongQueue());
-    this.set('playlist', new Playlist()); 
+    this.set('playlist', new Songs()); 
+    this.set('newCollection', new Playlist());
 
+
+    this.get('playlist').on('collectionCreated', function(collection) {
+      var newCol = new Playlist(collection.slice());
+      this.set('newCollection', newCol);
+    }, this);
 
     this.get('playlist').on('enqueuePlaylist', function(collection) {
       var copy = collection.slice();
@@ -14,7 +20,6 @@ var AppModel = Backbone.Model.extend({
         songQueue.add(song);
       });
     }, this);
-
     
     params.library.on('play', function(song) {
       this.set('currentSong', song);
@@ -37,7 +42,7 @@ var AppModel = Backbone.Model.extend({
     }, this);
 
     params.library.on('removeFromPlaylist', function(song) {
-      this.get('playlist').remove(song);
+      this.get('newCollection').remove(song);
     }, this);
   }
 

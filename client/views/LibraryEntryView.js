@@ -3,14 +3,24 @@ var LibraryEntryView = Backbone.View.extend({
 
   tagName: 'tr',
 
-  template: _.template('<td class=artist><%= artist %></td><td><%= title %><button class="queue btn btn-primary btn-xs">Queue</button><button class="playlist btn btn-warning btn-xs">Playlist</button></td>'),
+  template: _.template('<td class=artist><span class="glyphicon glyphicon-play-circle"></span><%= artist %></td><td><%= title %><button class="queue btn btn-primary btn-xs">Queue</button><button class="playlist btn btn-warning btn-xs">Playlist</button></td>'),
 
   events: {
     'click button.queue': function() {
       this.model.enqueue();
     },
-    'click': function() {
-      this.model.play();
+    'click span': function() {
+      if($(this.el).find('span').hasClass('playing')){
+        document.getElementsByClassName('audioplayer')[0].pause();
+        $(this.el).find('span').removeClass('playing').toggleClass('glyphicon-pause').toggleClass('glyphicon-play-circle').addClass('paused');
+      }else if($(this.el).find('span').hasClass('paused')){
+        document.getElementsByClassName('audioplayer')[0].play();
+        $(this.el).find('span').removeClass('paused').toggleClass('glyphicon-pause').toggleClass('glyphicon-play-circle').addClass('playing');
+      }else{
+        this.model.play();
+        $('span').removeClass('glyphicon-pause').addClass('glyphicon-play-circle').removeClass('playing');
+        $(this.el).find('span').toggleClass('glyphicon-play-circle').toggleClass('glyphicon-pause').addClass('playing');
+      }
     },
     'click button.playlist' : function() {
       this.model.addToPlaylist();

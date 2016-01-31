@@ -46,3 +46,14 @@ td {
   padding: 4px;
 }
 
+span {
+  padding-right: 5px;
+}
+
+.currentSong {
+  font-size: 20px;
+}
+
+.currentSong>span {
+  font-size: 16px;
+}

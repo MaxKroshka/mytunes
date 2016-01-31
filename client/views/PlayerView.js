@@ -3,7 +3,7 @@ var PlayerView = Backbone.View.extend({
 
   // HTML5 (native) audio tag is being used
   // see: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video
-  el: '<div class=audio><audio controls autoplay /></div>',
+  el: '<div class=currentSong>Currently Playing:<span></span></div><audio controls autoplay class=audioplayer/>',
 
 
   initialize: function() {
@@ -17,6 +17,7 @@ var PlayerView = Backbone.View.extend({
 
   setSong: function(song) {
     this.model = song;
+    $('.currentSong span').text(song.attributes.artist+' - '+song.attributes.title);
     this.render();
   },
 
