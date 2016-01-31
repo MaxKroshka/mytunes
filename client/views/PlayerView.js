@@ -18,6 +18,7 @@ var PlayerView = Backbone.View.extend({
   setSong: function(song) {
     this.model = song;
     $('.currentSong span').text(song.attributes.artist+' - '+song.attributes.title);
+    $('span').removeClass('glyphicon-pause').addClass('glyphicon-play-circle').removeClass('playing').removeClass('paused');
     this.render();
   },
 
