@@ -7,18 +7,21 @@ var AppModel = Backbone.Model.extend({
     this.set('playlist', new Songs()); 
     this.set('newCollection', new Playlist());
 
-
     this.get('playlist').on('collectionCreated', function(collection) {
-      var newCol = new Playlist(collection.slice());
-      this.set('newCollection', newCol);
+      var savedSongs = collection.slice();
+      var newCollection = this.get('newCollection');
+      savedSongs.forEach(function(song){
+        newCollection.add(song);
+      });
     }, this);
 
-    this.get('playlist').on('enqueuePlaylist', function(collection) {
-      var copy = collection.slice();
+    this.get('newCollection').on('enqueuePlaylist', function(collection) {
+      var listCopy = collection.slice();
       var songQueue = this.get('songQueue');
-      copy.forEach(function(song){
+      listCopy.forEach(function(song){
         songQueue.add(song);
       });
+      // this.collection.playQueue();
     }, this);
     
     params.library.on('play', function(song) {
