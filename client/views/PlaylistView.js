@@ -2,21 +2,15 @@ var PlaylistView = Backbone.View.extend({
 
   tagName: "div",
 
-  template: _.template('<div class=listHeader><% playlist %></div><button class="x btn btn-danger btn-xs">X</button>'),
+  template: _.template('<div class=listHeader><% listName %></div><button class="x btn btn-danger btn-xs">X</button>'),
 
-
-  initialize: function() {
-    this.collection.on('add', this.render, this);
+  initialize: function(){
+    this.render();
   },
 
   events: {
     'click button.x': function() {
-      var forRemoval = this.collection.slice();
-      // forRemoval.forEach(function(song){
-      //   this.collection.remove(song);
-      // });
-      this.collection.reset(null);
-      this.render();
+      this.collection.playlistRemoved();
     },
     'click button.play': function() {
       this.collection.enqueuePlaylist();
@@ -24,13 +18,14 @@ var PlaylistView = Backbone.View.extend({
   },
 
   render: function() {
+    var songs = this.model.get('library');
     this.$el.children().detach();
-    var listName = $('input').val();
-    this.$el.html('<div class=listHeader>'+listName+'<button class="play btn btn-success btn-sm">Play</button><button class="x btn btn-danger btn-sm">Remove</button></div>').append(
-      this.collection.map(function(song) {
-        return new PlaylistEntryView({model: song}).render();
-      })
-    );
+    var listName = $('input').val() || 'Forgot to name';
+    this.$el.html('<div class=listHeader>'+listName+'<button class="play btn btn-success btn-sm">Play</button><button class="x btn btn-danger btn-sm">Remove</button></div>')
+      .append(
+        songs.map(function(song) {
+          return new PlaylistEntryView({ model: song }).el;
+        })
+      );
   }
-
 });

@@ -3,8 +3,8 @@ var Songs = Backbone.Collection.extend({
 
   model: SongModel,
 
-  collectionCreated: function(){
-    this.trigger('collectionCreated',this);
+  playlistCreated: function(){
+    this.trigger('playlistCreated',this);
   }
 
 });

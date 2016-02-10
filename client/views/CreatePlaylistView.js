@@ -11,8 +11,7 @@ var CreatePlaylistView = Backbone.View.extend({
 
   events : {
     'click button.save' : function(){
-      var savedPlaylistCollection = this.collection.slice();
-      this.collection.collectionCreated(savedPlaylistCollection);
+      this.collection.playlistCreated();
       this.collection.reset(null);
       this.render();
     }

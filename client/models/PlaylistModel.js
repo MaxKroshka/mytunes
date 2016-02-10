@@ -1,4 +1,4 @@
-var Playlist = Songs.extend({
+var PlaylistModel = Backbone.Model.extend({
 
   initialize: function() {
   },
@@ -8,4 +8,3 @@ var Playlist = Songs.extend({
   }
 
 });
-

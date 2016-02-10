@@ -5,7 +5,11 @@ var PlaylistEntryView = Backbone.View.extend({
 
   template: _.template('<td class=artist><%= artist %></td><td><%= title %></td>'),
 
-  render: function(){
+  initialize: function() {
+    this.render();
+  },
+
+  render: function() {
     return this.$el.html(this.template(this.model.attributes));
   }
 
